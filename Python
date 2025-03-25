@@ -1,0 +1,38 @@
+def calculate_keq(concentration_A, concentration_B, concentration_C):
+    """
+    คำนวณค่าคงที่สมดุล K_eq จากความเข้มข้นของสาร A, B, C
+    K_eq = [B] * [C] / [A]
+    """
+    # คำนวณค่า K_eq
+    keq = (concentration_B * concentration_C) / concentration_A
+    return keq
+
+# ตัวอย่างการใช้งาน
+concentration_A = float(input("กรุณากรอกความเข้มข้นของ A ที่สมดุล (mol/L): "))
+concentration_B = float(input("กรุณากรอกความเข้มข้นของ B ที่สมดุล (mol/L): "))
+concentration_C = float(input("กรุณากรอกความเข้มข้นของ C ที่สมดุล (mol/L): "))
+
+keq = calculate_keq(concentration_A, concentration_B, concentration_C)
+print(f"ค่าคงที่สมดุล K_eq คือ: {keq:.2f}")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simulate_equilibrium_change(concentration_A_initial, concentration_B_initial, concentration_C_initial, delta_A):
+    """
+    จำลองการเปลี่ยนแปลงของความเข้มข้นหลังการเพิ่มสาร A
+    :param concentration_A_initial: ความเข้มข้นเริ่มต้นของ A
+    :param concentration_B_initial: ความเข้มข้นเริ่มต้นของ B
+    :param concentration_C_initial: ความเข้มข้นเริ่มต้นของ C
+    :param delta_A: การเพิ่มสาร A ในปริมาณที่กำหนด
+    :return: ความเข้มข้นใหม่ของ A, B, C
+    """
+    concentration_A_new = concentration_A_initial + delta_A
+    concentration_B_new = concentration_B_initial + delta_A
+    concentration_C_new = concentration_C_initial + delta_A
+    return concentration_A_new, concentration_B_new, concentration_C_new
+
+# ตัวอย่างการใช้งาน
+concentration_A_initial = 2.0  # mol/L
+concentration_B_initial = 3.0  # mol/L
+concentration_C_initial = 1.0  # mol/L
